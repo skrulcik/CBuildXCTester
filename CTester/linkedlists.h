@@ -31,4 +31,6 @@ bool LL_contains(LL *list, void *elem);
 void LL_push(LL *list, void *object);
 void *LL_pop(LL *list);
 
+void LL_free(LL *list);
+
 #endif /* linkedlists_c */

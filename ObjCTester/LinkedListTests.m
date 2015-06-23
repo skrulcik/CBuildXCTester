@@ -49,6 +49,16 @@ bool integerEqualityFunction(void *a, void *b) {
     singleton = LL_create(intEq);
     duplicate_a = LL_create(intEq);
     all_elems = LL_create(intEq);
+
+    LL_push(singleton, a);
+
+    LL_push(duplicate_a, a);
+    LL_push(duplicate_a, a_dup);
+
+    LL_push(all_elems, a);
+    LL_push(all_elems, a_dup);
+    LL_push(all_elems, b);
+    LL_push(all_elems, c);
 }
 
 - (void)tearDown {
@@ -74,6 +84,17 @@ bool integerEqualityFunction(void *a, void *b) {
 - (void)testEmpty {
     XCTAssert(LL_isEmpty(empty));
     XCTAssertFalse(LL_isEmpty(singleton));
+}
+
+- (void)testContains {
+    XCTAssert(LL_contains(singleton, a));
+    XCTAssertFalse(LL_contains(empty, a));
+
+    XCTAssert(LL_contains(singleton, a_dup));
+    XCTAssertFalse(LL_contains(singleton, b));
+
+    XCTAssert(LL_contains(all_elems, b));
+    XCTAssert(LL_contains(all_elems, c));
 }
 
 @end

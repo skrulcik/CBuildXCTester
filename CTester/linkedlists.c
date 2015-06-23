@@ -40,10 +40,17 @@ void LL_push(LL *list, void *object) {
 
 
 bool LL_isEmpty(LL *list) {
-    return true;
+    return list->first == NULL;
 }
 
 bool LL_contains(LL *list, void *elem) {
+    node *test = list->first;
+    while (test) {
+        if (list->elemEqual(elem, test->data)) {
+            return true;
+        }
+        test = test->next;
+    }
     return false;
 }
 
